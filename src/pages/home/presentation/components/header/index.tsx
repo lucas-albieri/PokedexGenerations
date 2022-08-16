@@ -1,6 +1,7 @@
-import { Container, Content, Filter } from "./style";
-import bg from "../../../../../assets/img/rayqBg.png";
+import { Container, Content, ContentBox, Filter, MovingClouds } from "./style";
+import bg from "../../../../../assets/img/rayqbg.png";
 import clouds from "../../../../../assets/img/clouds.png";
+import { Typography } from "../../../../../styles/globalStyles";
 
 const HeaderHome = () => {
     return (
@@ -11,22 +12,36 @@ const HeaderHome = () => {
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
                 width: "100%",
-                height: '90vh',
+                height: '100vh',
             }}>
 
             <Filter />
+
+
             <Content>
-                <Container>
-                    <div className="title-brand">
-                        <h1 className="presentation-title">Pokemon Generator</h1>
-                    </div>
-                    <h2 className="presentation-subtitle text-center">
-                        Discover your Pokemon!!
-                    </h2>
-                </Container>
+                <ContentBox>
+                    <Typography
+                        color={"white"}
+                        title={"type5"}
+                        style={{
+                            fontSize: "7rem",
+                            textAlign: "center",
+                        }}
+                    >
+                        Pokemon <br /> Generations
+                    </Typography>
+                    <Typography
+                        color={"white"}
+                        paragraph={"type2"}
+                        style={{
+                            marginTop: "2rem",
+                        }}
+                    >
+                        The world of Pokemon
+                    </Typography>
+                </ContentBox>
             </Content>
-            <div
-                className="moving-clouds"
+            <MovingClouds
                 style={{
                     backgroundImage: `url(${clouds})`,
                 }}

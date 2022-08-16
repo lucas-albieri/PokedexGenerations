@@ -1,10 +1,25 @@
+import NavBar from "../../../components/navbar";
 import HeaderHome from "./components/header";
+import { Container, Content } from "./styles";
 
 const Home = () => {
     return (
-        <div>
-            <HeaderHome />
-        </div>
+        <Container>
+            <Content>
+                <NavBar />
+
+                <HeaderHome />
+
+                <div style={{
+                    height: "1000px",
+                }}>
+                    dsad
+                </div>
+            </Content>
+
+        </Container>
+
+
     );
 }
 

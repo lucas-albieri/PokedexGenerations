@@ -1,11 +1,17 @@
-import { styled } from "@stitches/react";
+import { keyframes, styled } from "@stitches/react";
 
 export const Container = styled("div", {
     display: "flex",
     flexDirection: "column",
+})
+
+export const Content = styled("div", {
+    display: "flex",
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    color: "white",
+    width: "100%",
+    height: "100%",
 })
 
 export const Filter = styled("div", {
@@ -17,33 +23,28 @@ export const Filter = styled("div", {
     width: '100%',
     height: '100%',
     textAlign: 'center',
-    opacity: 0,
+    opacity: 0.70,
 })
 
-export const Content = styled("div", {
+export const ContentBox = styled("div", {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
 })
 
-export const MovingClouds = styled("div", {
 
+const cloudLoop = keyframes({
+    from: { transform: "translate3d(0,0,0)" },
+    to: { transform: "translate3d(-50%,0,0)" },
+});
+
+export const MovingClouds = styled("div", {
     position: 'absolute',
-    zIndex: 1,
+    zIndex: 2,
     bottom: 0,
     left: 0,
     width: '250.625em',
-    height: '43.75em',
-- webkit - animation: cloudLoop 80s linear infinite;
-animation: cloudLoop 80s linear infinite;
-
-@keyframes cloudLoop {
-    0 % {
-    - webkit - transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-}
-100 % {
-    - webkit - transform: translate3d(-50 %, 0, 0);
-transform: translate3d(-50 %, 0, 0); } }
+    height: '85%',
+    animation: `${cloudLoop} 80s linear infinite`,
 })
