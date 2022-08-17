@@ -1,5 +1,6 @@
 import NavBar from "../../../components/navbar";
 import HeaderHome from "./components/header";
+import ListPokemon from "./components/listPokemon";
 import { Container, Content } from "./styles";
 
 const Home = () => {
@@ -10,11 +11,7 @@ const Home = () => {
 
                 <HeaderHome />
 
-                <div style={{
-                    height: "1000px",
-                }}>
-                    dsad
-                </div>
+                <ListPokemon />
             </Content>
 
         </Container>

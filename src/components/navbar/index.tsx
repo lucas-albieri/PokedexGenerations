@@ -62,6 +62,7 @@ const NavBar = () => {
                         color: isScrolled ? `${Theme.theme.colors.gray700}` : `${Theme.theme.colors.white}`,
                         width: "50%",
                         fontWeight: "600",
+                        fontSize: "0.9rem",
                     }}
                     to="/"
                 >
