@@ -4,6 +4,7 @@ import ListPokemon from "./components/listPokemon";
 import { Container, Content } from "./styles";
 
 const Home = () => {
+
     return (
         <Container>
             <Content>
