@@ -1,5 +1,5 @@
 import { Container, Content, ContentBox, Filter, MovingClouds } from "./style";
-import bg from "../../../../../assets/img/rayqbg.png";
+// import bg from "../../../../../assets/img/rayqbg.png";
 import clouds from "../../../../../assets/img/clouds.png";
 import { Typography } from "../../../../../styles/globalStyles";
 
@@ -7,7 +7,7 @@ const HeaderHome = () => {
     return (
         <Container
             style={{
-                backgroundImage: `url(${bg})`,
+                // backgroundImage: `url(${bg})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
