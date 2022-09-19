@@ -3,6 +3,7 @@ import { keyframes, styled } from "@stitches/react";
 export const Container = styled("div", {
     display: "flex",
     flexDirection: "column",
+
 })
 
 export const Content = styled("div", {
