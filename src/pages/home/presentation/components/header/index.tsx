@@ -11,7 +11,8 @@ const HeaderHome = () => {
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
-                width: "100%",
+                width: "100vw",
+                overflowX: 'hidden',
                 height: '100vh',
             }}>
 
@@ -41,11 +42,15 @@ const HeaderHome = () => {
                     </Typography>
                 </ContentBox>
             </Content>
-            <MovingClouds
-                style={{
-                    backgroundImage: `url(${clouds})`,
-                }}
-            />
+            <div style={{
+                width: '10%'
+            }}>
+                <MovingClouds
+                    style={{
+                        backgroundImage: `url(${clouds})`,
+                    }}
+                />
+            </div>
         </Container>
     );
 }
