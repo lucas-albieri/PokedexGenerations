@@ -1,5 +1,5 @@
 import { Container, Content, ContentBox, Filter, MovingClouds } from "./style";
-import bg from "../../../../../assets/img/rayqbg.png";
+import bg from "../../../../../assets/img/rayqBg.png";
 import clouds from "../../../../../assets/img/clouds.png";
 import { Typography } from "../../../../../styles/globalStyles";
 
