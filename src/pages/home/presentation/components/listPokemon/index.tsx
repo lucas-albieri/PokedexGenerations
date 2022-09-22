@@ -1,5 +1,6 @@
 import { useQuery } from "@apollo/client";
-import { Box, CircularProgress, Skeleton } from "@mui/material";
+import { Box, Button, CircularProgress, Skeleton } from "@mui/material";
+import { useState } from "react";
 import { PokemonModel } from "../../../../../models/pokemon";
 import { GetAllPokemons } from "../../../../../queries/default_query";
 import Pokemon from "../pokemon";
@@ -8,9 +9,17 @@ import { BoxContent, Container, Content, ListPokemons } from "./styles";
 
 const ListPokemon = () => {
 
-    const allPokemons = useQuery(GetAllPokemons);
-
+    const [limit, setLimit] = useState(20);
+    const [offset, setOffset] = useState(0);
+    const allPokemons = useQuery(GetAllPokemons,
+        {
+            variables: {
+                limit: limit,
+                offset: offset
+            }
+        });
     // console.log(allPokemons.data.pokemon_v2_pokemon);
+
 
     return (
         <Container>
@@ -24,13 +33,14 @@ const ListPokemon = () => {
                                     display: 'flex',
                                     justifyContent: 'center',
                                     alignItems: 'center',
-                                    height: '100vh'
+                                    height: '100vh',
+                                    width: '100vw',
                                 }}>
-                                    <CircularProgress size={50} />
+                                    <CircularProgress size={70} />
                                 </Box>
                             </>
                                 :
-                                allPokemons.data && allPokemons.data.pokemon_v2_pokemon.slice(0, 20).map((pokemon: PokemonModel) => {
+                                allPokemons.data && allPokemons.data.pokemon_v2_pokemon.map((pokemon: PokemonModel) => {
                                     return (
                                         <Pokemon
                                             key={pokemon.id}
@@ -43,6 +53,20 @@ const ListPokemon = () => {
                                 })
                         }
                     </ListPokemons>
+
+                    <Button
+                        variant="contained"
+                        onClick={() => setLimit(limit + 20)}
+                        sx={{
+                            width: 'auto',
+                            margin: '0 auto',
+                            marginY: '2rem',
+                            fontSize: '0.9rem',
+                            fontWeight: '400',
+                            padding: '0.5rem 2rem',
+                        }}>
+                        Carregar Mais Pokemon
+                    </Button>
                 </BoxContent>
             </Content>
         </Container >

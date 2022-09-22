@@ -15,7 +15,7 @@ export const BoxImage = styled("div", {
 })
 
 export const BoxType = styled("div", {
-    marginTop: "1rem",
+    marginTop: "0.7rem",
     width: "100%",
     display: "flex",
     flexDirection: "row",
