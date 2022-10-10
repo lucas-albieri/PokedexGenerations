@@ -11,6 +11,7 @@ const ListPokemon = () => {
 
     const [limit, setLimit] = useState(20);
     const [offset, setOffset] = useState(0);
+    const [pokemonFiltered, setPokemonFiltered] = useState<PokemonModel>();
     const allPokemonsOfLimit = useQuery(GetAllPokemons,
         {
             variables: {
@@ -18,34 +19,31 @@ const ListPokemon = () => {
                 offset: offset
             }
         });
-    const [getPK, { data }] = useLazyQuery(GetAllPokemons,
+
+    const [getPK, { data: searchData, loading: searchLoad }] = useLazyQuery(GetAllPokemons,
         {
             variables: {
-                limit: 900,
+                limit: limit,
                 offset: offset,
                 _name: "",
                 id: 0
             }
         });
 
-    console.log("TESTE")
-    // const pokemons = allPokemon.data?.pokemon_v2_pokemon;
-    const [pokemonFiltered, setPokemonFiltered] = useState<PokemonModel>();
+    const allPk = searchData?.data?.pokemon_v2_pokemon ?? allPokemonsOfLimit.data?.pokemon_v2_pokemon ?? [] as PokemonModel[];
+
 
     const handleSearch = (_search: string) => {
         if (_search) {
             getPK({
                 variables: {
-                    limit: 900,
+                    limit: limit,
                     offset: offset,
                     _name: _search,
                     id: +_search
 
                 }
             });
-            // setPokemonFiltered(pokemons.find((pokemon: PokemonModel) =>
-            //     pokemon.name === _search || pokemon.id === parseInt(_search)));
-
         }
     }
 
@@ -64,7 +62,7 @@ const ListPokemon = () => {
                         display={allPokemonsOfLimit.loading ? "flex" : "grid"}
                     >
                         {
-                            allPokemonsOfLimit.loading ? <>
+                            allPokemonsOfLimit.loading || searchLoad ? <>
                                 <Box sx={{
                                     display: 'flex',
                                     justifyContent: 'center',
@@ -76,26 +74,18 @@ const ListPokemon = () => {
                                 </Box>
                             </>
                                 :
-                                pokemonFiltered ?
-                                    <Pokemon
-                                        id={pokemonFiltered.id}
-                                        name={pokemonFiltered.name}
-                                        pokemon_v2_pokemonsprites={pokemonFiltered.pokemon_v2_pokemonsprites}
-                                        pokemon_v2_pokemontypes={pokemonFiltered.pokemon_v2_pokemontypes}
-                                    />
-                                    :
-                                    allPokemonsOfLimit.data &&
-                                    allPokemonsOfLimit.data.pokemon_v2_pokemon.map((pokemon: PokemonModel) => {
-                                        return (
-                                            <Pokemon
-                                                key={pokemon.id}
-                                                id={pokemon.id}
-                                                name={pokemon.name}
-                                                pokemon_v2_pokemonsprites={pokemon.pokemon_v2_pokemonsprites}
-                                                pokemon_v2_pokemontypes={pokemon.pokemon_v2_pokemontypes}
-                                            />
-                                        )
-                                    })
+                                allPk.data &&
+                                allPk.map((pokemon: PokemonModel) => {
+                                    return (
+                                        <Pokemon
+                                            key={pokemon.id}
+                                            id={pokemon.id}
+                                            name={pokemon.name}
+                                            pokemon_v2_pokemonsprites={pokemon.pokemon_v2_pokemonsprites}
+                                            pokemon_v2_pokemontypes={pokemon.pokemon_v2_pokemontypes}
+                                        />
+                                    )
+                                })
                         }
                     </ListPokemonsProps>
 
