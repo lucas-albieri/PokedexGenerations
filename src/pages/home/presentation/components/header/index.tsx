@@ -42,15 +42,12 @@ const HeaderHome = () => {
                     </Typography>
                 </ContentBox>
             </Content>
-            <div style={{
-                width: '10%'
-            }}>
-                <MovingClouds
-                    style={{
-                        backgroundImage: `url(${clouds})`,
-                    }}
-                />
-            </div>
+
+            <MovingClouds
+                style={{
+                    backgroundImage: `url(${clouds})`,
+                }}
+            />
         </Container>
     );
 }

@@ -109,7 +109,7 @@ const NavBar = () => {
                                 width: "1.2rem",
                                 marginRight: "0.5rem",
                             }} alt="Snorlax" src={snorlax} />
-                            Saiba Mais
+                            Pokemon do Dia
                         </NavButton>
                     </NavItem>
                 </Nav>
