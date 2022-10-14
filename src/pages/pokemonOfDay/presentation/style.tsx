@@ -17,6 +17,7 @@ export const Content = styled("div", {
     flexDirection: "column",
     width: "100%",
     height: "100vh",
+    overflowY: "auto",
     backgroundColor: "#2f2245",
 })
 
@@ -74,6 +75,7 @@ export const PokemonOfDayBlock = styled("div", {
     justifyContent: "center",
     alignItems: "center",
     marginTop: "2.5rem",
+    marginBottom: "2rem",
 })
 
 export const PokemonOfDayTitle = styled("h2", {
@@ -90,7 +92,89 @@ export const Input = styled("input", {
     border: "none",
     borderRadius: "0.35rem",
     padding: "1.3rem 1rem",
-    fontWeight: "bold",
+    fontWeight: "600",
     fontSize: "1.1rem",
     boxShadow: "0 0 7px 1px #eeddfc",
+})
+
+export const PokemonTip = styled("div", {
+    display: "flex",
+    marginTop: "0.8rem",
+    backgroundColor: "#fff",
+    width: "15%",
+    borderRadius: "0.35rem",
+    padding: "0.2rem 1rem",
+    boxShadow: "0 0 5px 1px #eeddfc",
+    alignItems: "center",
+    cursor: "pointer",
+    transition: "all 0.2s",
+    '&:hover': {
+        boxShadow: "0 0 5px 3px #eeddfc",
+    }
+}
+)
+
+export const PokemonTipImage = styled("img", {
+    width: "18%",
+    height: "100%",
+    objectFit: "contain",
+})
+
+export const PokemonTipName = styled("p", {
+    color: "#4a4a4a",
+    fontSize: "0.9rem",
+    fontWeight: "600",
+    textTransform: "capitalize",
+    marginLeft: "0.5rem",
+})
+
+export const NumberOfTries = styled("p", {
+    color: 'white',
+    fontSize: '0.75rem',
+    margin: '1rem',
+    textAlign: 'left',
+    width: '30%'
+})
+
+export const PokemonsSelected = styled("div", {
+    display: "flex",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    width: "40%",
+    marginTop: "1rem",
+    marginBottom: "0.8rem",
+    backgroundColor: "#fff",
+    padding: "0.25rem 1rem",
+    borderRadius: "0.55rem",
+    boxShadow: "0 0 0.5rem 0.1rem #ffffff19",
+})
+
+export const PokemonSelectedPt1 = styled("div", {
+    display: "flex",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    width: "40%",
+})
+
+export const PokemonSelectedImage = styled("img", {
+    width: "20%",
+})
+
+export const PokemonSelectedName = styled("p", {
+    marginLeft: "1rem",
+    fontSize: "1.2rem",
+    fontWeight: "600",
+    color: "#272727",
+    textTransform: "capitalize",
+})
+
+export const PokemonSelectedPt2 = styled("div", {
+    display: "flex",
+    width: "60px",
+    height: "60px",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "0.15rem 0.5rem",
+    borderRadius: "999px",
+    marginLeft: "1rem",
 })
