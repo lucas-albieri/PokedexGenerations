@@ -1,22 +1,23 @@
 import { useLazyQuery, useQuery } from "@apollo/client";
-import { Box, Button, CircularProgress, Skeleton } from "@mui/material";
-import { useMemo, useState } from "react";
+import { Box, Button, CircularProgress } from "@mui/material";
+import { useState } from "react";
 import { PokemonModel } from "../../../../../models/pokemon";
 import { GetAllPokemons } from "../../../../../queries/default_query";
 import Pokemon from "../pokemon";
 import SearchHome from "../search";
-import { BoxContent, Container, Content, ListPokemons, ListPokemonsProps } from "./styles";
+import { BoxContent, Container, Content, ListPokemonsProps } from "./styles";
 
 const ListPokemon = () => {
 
     const [limit, setLimit] = useState(20);
     const [offset, setOffset] = useState(0);
-    const [pokemonFiltered, setPokemonFiltered] = useState<PokemonModel>();
     const allPokemonsOfLimit = useQuery(GetAllPokemons,
         {
             variables: {
                 limit: limit,
-                offset: offset
+                offset: offset,
+                _name: '%%',
+                id: 0,
             }
         });
 
@@ -25,12 +26,13 @@ const ListPokemon = () => {
             variables: {
                 limit: limit,
                 offset: offset,
-                _name: "",
-                id: 0
+                _name: "%%",
             }
         });
 
-    const allPk = searchData?.data?.pokemon_v2_pokemon ?? allPokemonsOfLimit.data?.pokemon_v2_pokemon ?? [] as PokemonModel[];
+    const allPk = searchData?.pokemon_v2_pokemon ?? allPokemonsOfLimit.data?.pokemon_v2_pokemon ?? [] as PokemonModel[];
+
+    console.log(searchData);
 
 
     const handleSearch = (_search: string) => {
@@ -39,8 +41,7 @@ const ListPokemon = () => {
                 variables: {
                     limit: limit,
                     offset: offset,
-                    _name: _search,
-                    id: +_search
+                    _name: '%' + _search + '%',
 
                 }
             });
@@ -74,7 +75,7 @@ const ListPokemon = () => {
                                 </Box>
                             </>
                                 :
-                                allPk.data &&
+                                allPk &&
                                 allPk.map((pokemon: PokemonModel) => {
                                     return (
                                         <Pokemon

@@ -104,7 +104,9 @@ const NavBar = () => {
                         </NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavButton>
+                        <NavButton
+                            onClick={() => navigate("/pokemondodia")}
+                        >
                             <img style={{
                                 width: "1.2rem",
                                 marginRight: "0.5rem",
